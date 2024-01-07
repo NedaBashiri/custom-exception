@@ -2,11 +2,15 @@ package service;
 
 import entity.Country;
 import exception.NullCountryNameException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class App {
+    private static final Logger LOGGER = LogManager.getLogger(App.class);
+
     public static void main(String[] args) {
 
         Country usa = new Country("United States", "USA", 331000000);
@@ -41,6 +45,7 @@ public class App {
                 }
             } catch (NullCountryNameException ex) {
                 System.err.println(ex);
+                LOGGER.error(ex);
             }
         }
 
